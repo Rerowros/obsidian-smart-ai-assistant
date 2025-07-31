@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-smart-ai-assistant",
-	"version": "2.0.0",
+	"version": "1.0.0",
 	"description": "Smart AI Assistant for Obsidian - Intelligent search and analysis with Google AI",
 	"main": "main.js",
 	"scripts": {

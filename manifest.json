@@ -1,9 +1,9 @@
 {
-	"id": "obsidian-smart-ai-assistant",
+	"id": "smart-ai-assistant",
 	"name": "Smart AI Assistant",
 	"version": "1.0.0",
 	"minAppVersion": "0.17.0",
-	"description": "Интеллектуальный помощник с поддержкой Google AI для поиска, анализа и работы с заметками в Obsidian. Включает расширенные возможности поиска, создание кликабельных ссылок и персонализированную работу с контентом.",
+	"description": "An intelligent assistant with Google AI support for searching, analyzing, and working with notes. It includes advanced search capabilities, creation of clickable links and personalized work with content.",
 	"author": "Rerowros",
 	"authorUrl": "https://github.com/Rerowros",
 	"fundingUrl": "",
