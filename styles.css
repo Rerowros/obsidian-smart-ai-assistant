@@ -1,0 +1,658 @@
+/* Стили для плагина Google AI Smart Search */
+
+/* Модальное окно поиска */
+.google-ai-search-modal {
+    min-width: 600px;
+    max-width: 800px;
+}
+
+.google-ai-search-modal .modal-content {
+    padding: 20px;
+}
+
+/* Вкладки */
+.search-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--background-modifier-border);
+    margin-bottom: 20px;
+    gap: 5px;
+}
+
+.search-tab {
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    background-color: var(--background-secondary);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.search-tab:hover {
+    background-color: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.search-tab.active {
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+    border-color: var(--background-modifier-border);
+    border-bottom: 1px solid var(--background-primary);
+    margin-bottom: -1px;
+}
+
+.search-section {
+    display: block;
+}
+
+.search-section.hidden {
+    display: none;
+}
+
+/* Продвинутые опции */
+.advanced-options {
+    margin: 15px 0;
+    padding: 15px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    background-color: var(--background-secondary);
+}
+
+.advanced-options .setting-item {
+    border: none;
+    padding: 8px 0;
+}
+
+/* Кликабельные результаты */
+.clickable-result {
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.2s ease;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.clickable-result:hover {
+    background-color: var(--background-modifier-hover);
+    text-decoration: none;
+}
+
+.clickable-file {
+    color: var(--text-accent);
+}
+
+.clickable-file:hover {
+    color: var(--text-accent-hover);
+}
+
+.clickable-web {
+    color: var(--color-blue);
+}
+
+.clickable-web:hover {
+    color: var(--color-blue-hover);
+}
+
+.clickable-code {
+    color: var(--color-green);
+    font-family: var(--font-monospace);
+}
+
+.clickable-code:hover {
+    color: var(--color-green-hover);
+}
+
+/* Веб-результаты */
+.web-results-section {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid var(--color-blue);
+    border-radius: 6px;
+    background-color: var(--background-secondary);
+}
+
+.web-results-section h4 {
+    margin: 0 0 10px 0;
+    color: var(--color-blue);
+}
+
+.web-result-item {
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 3px solid var(--color-blue);
+    background-color: var(--background-primary);
+}
+
+.web-snippet {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 5px 0 0 0;
+    font-style: italic;
+}
+
+/* Результаты выполнения кода */
+.code-results-section {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid var(--color-green);
+    border-radius: 6px;
+    background-color: var(--background-secondary);
+}
+
+.code-results-section h4 {
+    margin: 0 0 10px 0;
+    color: var(--color-green);
+}
+
+.code-result-item {
+    margin: 15px 0;
+    padding: 15px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    background-color: var(--background-primary);
+}
+
+.code-result-item h5 {
+    margin: 0 0 10px 0;
+    color: var(--text-normal);
+    font-family: var(--font-monospace);
+}
+
+.code-result-item h6 {
+    margin: 10px 0 5px 0;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.code-output {
+    background-color: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    padding: 10px;
+    font-family: var(--font-monospace);
+    font-size: 12px;
+    color: var(--text-normal);
+    white-space: pre-wrap;
+}
+
+.code-error {
+    background-color: var(--background-modifier-error);
+    border: 1px solid var(--text-error);
+    border-radius: 4px;
+    padding: 10px;
+    font-family: var(--font-monospace);
+    font-size: 12px;
+    color: var(--text-error);
+    white-space: pre-wrap;
+}
+
+/* Быстрые команды */
+.quick-commands {
+    margin: 15px 0;
+    padding: 15px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    background-color: var(--background-secondary);
+}
+
+.quick-commands h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: var(--text-normal);
+}
+
+.commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+}
+
+.quick-command-btn {
+    padding: 8px 12px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+    cursor: pointer;
+    font-size: 12px;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.quick-command-btn:hover {
+    background-color: var(--interactive-hover);
+    border-color: var(--interactive-accent);
+    transform: translateY(-1px);
+}
+
+/* Поле ввода запроса */
+.google-ai-query-input {
+    width: 100%;
+    min-height: 80px;
+    resize: vertical;
+    font-family: var(--font-monospace);
+    font-size: 14px;
+    line-height: 1.4;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    padding: 10px;
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+}
+
+.google-ai-query-input:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+    box-shadow: 0 0 0 2px var(--interactive-accent-hover);
+}
+
+/* Кнопки */
+.google-ai-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    justify-content: flex-start;
+}
+
+.google-ai-button {
+    padding: 8px 16px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    background-color: var(--interactive-normal);
+    color: var(--text-normal);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.google-ai-button:hover {
+    background-color: var(--interactive-hover);
+    border-color: var(--interactive-accent);
+}
+
+.google-ai-button.mod-cta {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border-color: var(--interactive-accent);
+}
+
+.google-ai-button.mod-cta:hover {
+    background-color: var(--interactive-accent-hover);
+}
+
+.google-ai-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Область результатов */
+.google-ai-results {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 8px;
+    background-color: var(--background-secondary);
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.google-ai-results.loading {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 15px;
+}
+
+.google-ai-results.error {
+    background-color: var(--background-modifier-error);
+    border-color: var(--text-error);
+    color: var(--text-error);
+}
+
+.google-ai-results.empty {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Запрос */
+.google-ai-query {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-accent);
+    font-size: 16px;
+}
+
+/* Ответ */
+.google-ai-response {
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 14px;
+    color: var(--text-normal);
+}
+
+.google-ai-response h1,
+.google-ai-response h2,
+.google-ai-response h3,
+.google-ai-response h4,
+.google-ai-response h5,
+.google-ai-response h6 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--text-normal);
+}
+
+.google-ai-response p {
+    margin-bottom: 12px;
+}
+
+.google-ai-response ul,
+.google-ai-response ol {
+    margin-left: 20px;
+    margin-bottom: 12px;
+}
+
+.google-ai-response li {
+    margin-bottom: 6px;
+}
+
+.google-ai-response code {
+    background-color: var(--background-modifier-border);
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: var(--font-monospace);
+    font-size: 0.9em;
+}
+
+.google-ai-response pre {
+    background-color: var(--background-modifier-border);
+    padding: 10px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.google-ai-response pre code {
+    background: none;
+    padding: 0;
+}
+
+/* Кнопка копирования */
+.google-ai-copy-button {
+    margin-top: 15px;
+    padding: 6px 12px;
+    background-color: var(--interactive-normal);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    color: var(--text-normal);
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.google-ai-copy-button:hover {
+    background-color: var(--interactive-hover);
+}
+
+/* Информация о настройках */
+.google-ai-info {
+    padding: 15px;
+    background-color: var(--background-secondary);
+    border-radius: 6px;
+    margin: 15px 0;
+}
+
+.google-ai-info p {
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.google-ai-info a {
+    color: var(--text-accent);
+    text-decoration: none;
+}
+
+.google-ai-info a:hover {
+    text-decoration: underline;
+}
+
+/* Загрузочная анимация */
+.google-ai-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--background-modifier-border);
+    border-radius: 50%;
+    border-top-color: var(--interactive-accent);
+    animation: google-ai-spin 1s ease-in-out infinite;
+}
+
+@keyframes google-ai-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Статус подключения */
+.google-ai-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.google-ai-status.connected {
+    background-color: var(--background-modifier-success);
+    color: var(--text-success);
+}
+
+.google-ai-status.disconnected {
+    background-color: var(--background-modifier-error);
+    color: var(--text-error);
+}
+
+.google-ai-status-icon {
+    font-size: 14px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .google-ai-search-modal {
+        min-width: 90vw;
+        max-width: 95vw;
+    }
+    
+    .google-ai-query-input {
+        font-size: 16px; /* Предотвращает зум на iOS */
+    }
+    
+    .google-ai-buttons {
+        flex-direction: column;
+    }
+    
+    .google-ai-button {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .google-ai-results {
+        max-height: 300px;
+    }
+}
+
+/* Темная тема */
+.theme-dark .google-ai-query-input {
+    background-color: var(--background-primary);
+    border-color: var(--background-modifier-border);
+    color: var(--text-normal);
+}
+
+.theme-dark .google-ai-results {
+    background-color: var(--background-secondary);
+    border-color: var(--background-modifier-border);
+}
+
+/* Высокий контраст */
+@media (prefers-contrast: high) {
+    .google-ai-button {
+        border-width: 2px;
+    }
+    
+    .google-ai-results {
+        border-width: 2px;
+    }
+    
+    .google-ai-query-input {
+        border-width: 2px;
+    }
+}
+
+/* Advanced Features Modal */
+.advanced-features-modal {
+    max-width: 600px;
+    width: auto;
+}
+
+.feature-selection {
+    max-width: 100%;
+}
+
+.feature-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    background-color: var(--background-secondary);
+}
+
+.feature-section h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-normal);
+    font-size: 16px;
+}
+
+.feature-description {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+}
+
+.feature-section hr {
+    border: none;
+    border-top: 1px solid var(--background-modifier-border);
+    margin: 15px 0;
+}
+
+.feature-buttons {
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.feature-buttons .setting-item {
+    border: none;
+    padding: 0;
+    margin: 0;
+    flex: 0 0 auto;
+}
+
+.feature-buttons .setting-item-info {
+    display: none;
+}
+
+.feature-buttons .setting-item-control {
+    margin: 0;
+}
+
+.feature-input {
+    margin: 15px 0;
+}
+
+.feature-input .setting-item {
+    border: none;
+    padding: 5px 0;
+    margin: 0;
+}
+
+.feature-input .setting-item-control {
+    width: 100%;
+}
+
+.feature-input input[type="text"],
+.feature-input select {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Advanced Results Area */
+.advanced-results {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    background-color: var(--background-primary);
+    max-height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}
+
+/* Loading Area */
+.loading-area {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
+}
+
+.loading-area.hidden {
+    display: none;
+}
+
+/* Copy Button */
+.copy-result-btn {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: var(--interactive-normal);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    color: var(--text-normal);
+    cursor: pointer;
+}
+
+.copy-result-btn:hover {
+    background-color: var(--interactive-hover);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .advanced-features-modal {
+        max-width: 95vw;
+        margin: 10px;
+    }
+    
+    .feature-section {
+        margin: 15px 0;
+        padding: 12px;
+    }
+    
+    .feature-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .feature-buttons .setting-item {
+        width: 100%;
+    }
+    
+    .advanced-results {
+        max-height: 300px;
+        padding: 12px;
+    }
+}
