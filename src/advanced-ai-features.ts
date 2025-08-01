@@ -353,4 +353,42 @@ ${relevantContent.join('\n\n---\n\n')}
 
 		return await this.aiService.generateResponse(prompt);
 	}
+
+	/**
+	 * Обсуждение конкретного файла с ИИ
+	 */
+	async discussFile(filePath: string, query: string): Promise<string> {
+		const file = this.vault.getAbstractFileByPath(filePath) as TFile;
+		if (!file) {
+			throw new Error('Файл не найден');
+		}
+
+		const content = await this.vault.read(file);
+		if (!content.trim()) {
+			throw new Error('Файл пуст');
+		}
+
+		const prompt = `
+КОНТЕНТ ФАЙЛА "${file.basename}":
+${content}
+
+ВОПРОС/ТЕМА ДЛЯ ОБСУЖДЕНИЯ:
+${query}
+
+ИНСТРУКЦИИ:
+1. Внимательно изучи содержимое файла
+2. Ответь на вопрос или обсуди заданную тему, основываясь ТОЛЬКО на содержимом файла
+3. Если в файле недостаточно информации для полного ответа, укажи это
+4. Предоставь конкретные ссылки на части текста, которые подтверждают твой ответ
+5. Если уместно, предложи дополнительные вопросы для более глубокого анализа
+
+Формат ответа:
+- **Прямой ответ** на заданный вопрос
+- **Обоснование** со ссылками на текст
+- **Дополнительные инсайты** (если есть)
+- **Предложения** для дальнейшего анализа (если уместно)
+		`;
+
+		return await this.aiService.generateResponse(prompt);
+	}
 }

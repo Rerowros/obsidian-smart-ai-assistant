@@ -1,0 +1,31 @@
+name: Release
+
+description: Автоматический релиз Obsidian Smart AI Assistant при пуше тега
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Установка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Установка зависимостей
+        run: npm ci
+      - name: Сборка плагина
+        run: npm run build
+      - name: Создать релиз на GitHub
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            main.js
+            manifest.json
+            styles.css
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

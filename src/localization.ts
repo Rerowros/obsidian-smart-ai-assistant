@@ -68,12 +68,15 @@ export interface LocaleStrings {
 	filesSearched: string;
 	noResults: string;
 	searching: string;
+	searchStreaming: string;
 	
 	// History
 	searchHistoryTitle: string;
-	bookmarkResult: string;
-	deleteResult: string;
-	clearHistory: string;
+	historyEmpty: string;
+	historyCleared: string;
+	rerunQueryTooltip: string;
+	searchHistoryHeader: string;
+	clearHistoryButton: string;
 	
 	// Stats
 	totalSearches: string;
@@ -86,6 +89,17 @@ export interface LocaleStrings {
 	errorNetwork: string;
 	errorModel: string;
 	errorGeneral: string;
+	enterSearchQuery: string;
+	configureApiKey: string;
+	modelOverloaded: string;
+	invalidApiKey: string;
+	quotaExceeded: string;
+	unknownSearchError: string;
+	savingError: string;
+	resultSaved: string;
+	resultSavedInRoot: string;
+	savingErrorGeneral: string;
+	resultCopied: string;
 	
 	// Buttons
 	save: string;
@@ -139,6 +153,14 @@ export interface LocaleStrings {
 	enterTopicForPlan: string;
 	selectNoteForImprovement: string;
 	
+	// Single file discussion
+	singleFileDiscussion: string;
+	singleFileDiscussionDesc: string;
+	selectFileForDiscussion: string;
+	discussionQueryPlaceholder: string;
+	discussWithFile: string;
+	enterDiscussionQuery: string;
+	
 	// Additional settings translations
 	testApiConnection: string;
 	testApiConnectionDesc: string;
@@ -160,7 +182,6 @@ export interface LocaleStrings {
 	historySettingsTitle: string;
 	clearHistoryName: string;
 	clearHistoryDesc: string;
-	clearHistoryButton: string;
 	historyClearedNotice: string;
 
 	// API Information
@@ -193,38 +214,22 @@ export interface LocaleStrings {
 	quickCommandFindConnections: string;
 	quickCommandAnalyze: string;
 	quickCommandIdeas: string;
-	
-	// Streaming related
-	searchStreaming: string;
-	streamingModeSearch: string;
-	
-	// Search progress
-	webSearchProgress: string;
-	codeExecutionProgress: string;
-	
-	// Notice messages
-	historyCleared: string;
-	enterSearchQuery: string;
-	configureApiKey: string;
-	resultSaved: string;
-	savingError: string;
-	resultCopied: string;
-	resultSavedAs: string;
-	resultSavedInRoot: string;
-	savingErrorGeneral: string;
-	
-	// Error messages
-	modelOverloaded: string;
-	invalidApiKey: string;
-	quotaExceeded: string;
-	unknownSearchError: string;
+	quickCommandSummarize: string;
+	quickCommandExplain: string;
+	quickCommandBrainstorm: string;
+	quickCommandTranslate: string;
+
+	// Other
 	searchErrorTitle: string;
-	
-	// Troubleshooting
 	possibleSolutions: string;
 	checkApiKey: string;
 	checkConnection: string;
 	checkLimits: string;
+	webSearchProgress: string;
+	codeExecutionProgress: string;
+	streamingResponse: string;
+	tokens: string;
+	resultSavedAs: string;
 }
 
 export const LOCALE_EN: LocaleStrings = {
@@ -274,7 +279,7 @@ export const LOCALE_EN: LocaleStrings = {
 	searchTabTitle: '🔍 Search',
 	historyTabTitle: '📚 History',
 	statsTabTitle: '📊 Statistics',
-	queryInputName: '🔍 Search Query',
+	queryInputName: ' Search Query',
 	queryInputDesc: 'Enter your question or search query for intelligent search',
 	queryPlaceholder: 'e.g., Tell me about machine learning methods based on my notes...',
 	searchButtonText: 'Search',
@@ -297,12 +302,14 @@ export const LOCALE_EN: LocaleStrings = {
 	filesSearched: 'Files searched',
 	noResults: 'No results found',
 	searching: 'Searching...',
+	searchStreaming: 'Streaming...',
 	
 	// History
 	searchHistoryTitle: 'Search History',
-	bookmarkResult: 'Bookmark',
-	deleteResult: 'Delete',
-	clearHistory: 'Clear History',
+	historyEmpty: '📝 Search history is empty. Run a few queries to see them here.',
+	historyCleared: 'Search history cleared',
+	rerunQueryTooltip: '🔄 Rerun query',
+	searchHistoryHeader: '📚 Search History',
 	
 	// Stats
 	totalSearches: 'Total searches',
@@ -315,6 +322,17 @@ export const LOCALE_EN: LocaleStrings = {
 	errorNetwork: 'Network error. Please check your connection',
 	errorModel: 'Model error. Please try a different model',
 	errorGeneral: 'An error occurred during search',
+	enterSearchQuery: 'Please enter a search query.',
+	configureApiKey: 'Please configure your API key in the plugin settings.',
+	modelOverloaded: 'The model is currently overloaded. Please try again later.',
+	invalidApiKey: 'Invalid API key. Please check your settings.',
+	quotaExceeded: 'API quota exceeded. Please check your billing.',
+	unknownSearchError: 'An unknown error occurred during the search.',
+	savingError: 'Failed to save search result:',
+	resultSaved: 'Result saved to',
+	resultSavedInRoot: 'Result saved in root as',
+	savingErrorGeneral: 'Failed to save note.',
+	resultCopied: 'Result copied to clipboard.',
 	
 	// Buttons
 	save: 'Save',
@@ -368,6 +386,14 @@ export const LOCALE_EN: LocaleStrings = {
 	enterTopicForPlan: 'Enter a topic for creating plan',
 	selectNoteForImprovement: 'Select a note for analysis',
 	
+	// Single file discussion
+	singleFileDiscussion: '💬 Single File Discussion',
+	singleFileDiscussionDesc: 'Analyze and discuss content of a specific file with AI',
+	selectFileForDiscussion: 'Select file for discussion',
+	discussionQueryPlaceholder: 'What would you like to know or discuss about this file?',
+	discussWithFile: 'Discuss with File',
+	enterDiscussionQuery: 'Enter your question or topic for discussion',
+	
 	// Additional settings translations
 	testApiConnection: 'Test API Connection',
 	testApiConnectionDesc: 'Test your API key and connection',
@@ -417,44 +443,28 @@ export const LOCALE_EN: LocaleStrings = {
 	apiInformationDesc: 'Information about Google AI API usage and configuration',
 	
 	// Quick Commands
-	quickCommandsTitle: '⚡ Quick Commands:',
+	quickCommandsTitle: 'Quick Commands:',
 	quickCommandWhatIHave: '📝 What I have about topic...',
 	quickCommandFindConnections: '🔗 Find connections between...',
 	quickCommandAnalyze: '📊 Analyze in detail...',
 	quickCommandIdeas: '💡 Give ideas based on...',
-	
-	// Streaming related
-	searchStreaming: 'Searching (streaming)...',
-	streamingModeSearch: '⚡ Search (stream)',
-	
-	// Search progress
-	webSearchProgress: '🌐 Performing web search...',
-	codeExecutionProgress: '💻 Executing code...',
-	
-	// Notice messages
-	historyCleared: 'Search history cleared',
-	enterSearchQuery: 'Please enter a search query',
-	configureApiKey: 'Please configure API key in plugin settings',
-	resultSaved: 'Result saved:',
-	savingError: 'Saving error:',
-	resultCopied: 'Result copied to clipboard',
-	resultSavedAs: '✅ Result saved as',
-	resultSavedInRoot: '✅ Result saved as',
-	savingErrorGeneral: '❌ Error saving note',
-	
-	// Error messages
-	modelOverloaded: 'Model temporarily overloaded. Try again later or select another model in settings.',
-	invalidApiKey: 'Invalid API key. Check the key in plugin settings.',
-	quotaExceeded: 'API limit exceeded. Check quotas in Google AI Console.',
-	unknownSearchError: 'Unknown search error',
-	searchErrorTitle: '❌ Search Error',
-	
-	// Troubleshooting
+	quickCommandSummarize: '📄 Summarize:',
+	quickCommandExplain: '🧠 Explain:',
+	quickCommandBrainstorm: '💡 Brainstorm ideas for:',
+	quickCommandTranslate: '🌐 Translate to English:',
+
+	// Other
+	searchErrorTitle: 'Search Error',
 	possibleSolutions: 'Possible solutions:',
-	checkApiKey: 'Check your API key in settings',
-	checkConnection: 'Make sure you have internet connection',
-	checkLimits: 'Check your Google AI API limits',
-};
+	checkApiKey: 'Check if the API key is correct.',
+	checkConnection: 'Check your internet connection.',
+	checkLimits: 'Check your API usage and limits.',
+	webSearchProgress: 'Performing web search...',
+	codeExecutionProgress: 'Executing code...',
+	streamingResponse: '📡 Receiving real-time response...',
+	tokens: 'tokens',
+	resultSavedAs: 'Result saved as',
+}
 
 export const LOCALE_RU: LocaleStrings = {
 	// Settings
@@ -503,7 +513,7 @@ export const LOCALE_RU: LocaleStrings = {
 	searchTabTitle: '🔍 Поиск',
 	historyTabTitle: '📚 История',
 	statsTabTitle: '📊 Статистика',
-	queryInputName: '🔍 Поисковый запрос',
+	queryInputName: ' Поисковый запрос',
 	queryInputDesc: 'Введите ваш вопрос или запрос для интеллектуального поиска',
 	queryPlaceholder: 'Например: Расскажи о методах машинного обучения на основе моих заметок...',
 	searchButtonText: 'Поиск',
@@ -526,12 +536,14 @@ export const LOCALE_RU: LocaleStrings = {
 	filesSearched: 'Файлов просмотрено',
 	noResults: 'Результаты не найдены',
 	searching: 'Поиск...',
+	searchStreaming: 'Потоковая передача...',
 	
 	// History
 	searchHistoryTitle: 'История поиска',
-	bookmarkResult: 'В закладки',
-	deleteResult: 'Удалить',
-	clearHistory: 'Очистить историю',
+	historyEmpty: '📝 История поиска пуста. Выполните несколько запросов, чтобы увидеть их здесь.',
+	historyCleared: 'История поиска очищена',
+	rerunQueryTooltip: '🔄 Повторить запрос',
+	searchHistoryHeader: '📚 История поиска',
 	
 	// Stats
 	totalSearches: 'Всего поисков',
@@ -544,6 +556,17 @@ export const LOCALE_RU: LocaleStrings = {
 	errorNetwork: 'Ошибка сети. Проверьте ваше соединение',
 	errorModel: 'Ошибка модели. Попробуйте другую модель',
 	errorGeneral: 'Произошла ошибка во время поиска',
+	enterSearchQuery: 'Введите поисковый запрос.',
+	configureApiKey: 'Настройте ваш API ключ в настройках плагина.',
+	modelOverloaded: 'Модель в данный момент перегружена. Попробуйте позже.',
+	invalidApiKey: 'Неверный API ключ. Проверьте настройки.',
+	quotaExceeded: 'Превышена квота API. Проверьте ваш биллинг.',
+	unknownSearchError: 'Произошла неизвестная ошибка во время поиска.',
+	savingError: 'Не удалось сохранить результат поиска:',
+	resultSaved: 'Результат сохранен в',
+	resultSavedInRoot: 'Результат сохранен в корне как',
+	savingErrorGeneral: 'Не удалось сохранить заметку.',
+	resultCopied: 'Результат скопирован в буфер обмена.',
 	
 	// Buttons
 	save: 'Сохранить',
@@ -597,6 +620,14 @@ export const LOCALE_RU: LocaleStrings = {
 	enterTopicForPlan: 'Введите тему для создания плана',
 	selectNoteForImprovement: 'Выберите заметку для анализа',
 	
+	// Single file discussion
+	singleFileDiscussion: '💬 Обсуждение файла',
+	singleFileDiscussionDesc: 'Анализируйте и обсуждайте содержимое конкретного файла с ИИ',
+	selectFileForDiscussion: 'Выберите файл для обсуждения',
+	discussionQueryPlaceholder: 'Что вы хотели бы узнать или обсудить об этом файле?',
+	discussWithFile: 'Обсудить с файлом',
+	enterDiscussionQuery: 'Введите ваш вопрос или тему для обсуждения',
+	
 	// Additional settings translations
 	testApiConnection: 'Тест соединения с API',
 	testApiConnectionDesc: 'Проверить ваш API ключ и соединение',
@@ -646,44 +677,28 @@ export const LOCALE_RU: LocaleStrings = {
 	apiInformationDesc: 'Информация об использовании и настройке Google AI API',
 	
 	// Quick Commands
-	quickCommandsTitle: '⚡ Быстрые команды:',
+	quickCommandsTitle: 'Быстрые команды:',
 	quickCommandWhatIHave: '📝 Что у меня есть по теме...',
 	quickCommandFindConnections: '🔗 Найди связи между...',
 	quickCommandAnalyze: '📊 Сделай анализ...',
 	quickCommandIdeas: '💡 Дай идеи на основе...',
-	
-	// Streaming related
-	searchStreaming: 'Поиск (потоковый режим)...',
-	streamingModeSearch: '⚡ Поиск (стрим)',
-	
-	// Search progress
-	webSearchProgress: '🌐 Выполняется веб-поиск...',
-	codeExecutionProgress: '💻 Выполняется код...',
-	
-	// Notice messages
-	historyCleared: 'История поиска очищена',
-	enterSearchQuery: 'Пожалуйста, введите поисковый запрос',
-	configureApiKey: 'Пожалуйста, настройте API ключ в настройках плагина',
-	resultSaved: 'Результат сохранен:',
-	savingError: 'Ошибка сохранения:',
-	resultCopied: 'Результат скопирован в буфер обмена',
-	resultSavedAs: '✅ Результат сохранен как',
-	resultSavedInRoot: '✅ Результат сохранен как',
-	savingErrorGeneral: '❌ Ошибка при сохранении заметки',
-	
-	// Error messages
-	modelOverloaded: 'Модель временно перегружена. Попробуйте позже или выберите другую модель в настройках.',
-	invalidApiKey: 'Неверный API ключ. Проверьте ключ в настройках плагина.',
-	quotaExceeded: 'Превышен лимит API. Проверьте квоты в Google AI Console.',
-	unknownSearchError: 'Неизвестная ошибка поиска',
-	searchErrorTitle: '❌ Ошибка поиска',
-	
-	// Troubleshooting
+	quickCommandSummarize: '📄 Суммируй:',
+	quickCommandExplain: '🧠 Объясни:',
+	quickCommandBrainstorm: '💡 Мозговой штурм для:',
+	quickCommandTranslate: '🌐 Переведи на английский:',
+
+	// Other
+	searchErrorTitle: 'Ошибка поиска',
 	possibleSolutions: 'Возможные решения:',
-	checkApiKey: 'Проверьте ваш API ключ в настройках',
-	checkConnection: 'Убедитесь, что у вас есть интернет соединение',
-	checkLimits: 'Проверьте лимиты вашего Google AI API',
-};
+	checkApiKey: 'Проверьте правильность API ключа.',
+	checkConnection: 'Проверьте ваше интернет-соединение.',
+	checkLimits: 'Проверьте ваше использование API и лимиты.',
+	webSearchProgress: 'Выполняется веб-поиск...',
+	codeExecutionProgress: 'Выполняется код...',
+	streamingResponse: '📡 Получение ответа в реальном времени...',
+	tokens: 'токенов',
+	resultSavedAs: 'Результат сохранен как',
+}
 
 export function getLocale(language: 'en' | 'ru' = 'ru'): LocaleStrings {
 	return language === 'en' ? LOCALE_EN : LOCALE_RU;

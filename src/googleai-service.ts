@@ -1,4 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
+import { Notice } from 'obsidian';
 import { GoogleAIModel, GoogleAISettings, TokenUsage, WebSearchResult, CodeExecutionResult } from './types';
 import { getPrompts, formatPrompt } from './prompts';
 
@@ -19,7 +20,7 @@ export class GoogleAIService {
 
 		try {
 			this.genAI = new GoogleGenAI({ apiKey: this.settings.apiKey });
-			console.log(`Инициализирован Google Gen AI с API ключом`);
+			// Debug: removed console.log for production
 		} catch (error) {
 			console.error('Failed to initialize Google Gen AI:', error);
 			this.genAI = null;
@@ -236,53 +237,82 @@ export class GoogleAIService {
 		}
 
 		try {
-			// Используем Google Search grounding через функцию или инструменты модели
-			// Примечание: для реального веб-поиска нужно использовать Google Search grounding
-			const groundingPrompt = `Найди информацию в интернете по запросу: "${query}"
-			
-Пожалуйста, предоставь:
-1. Релевантные источники и ссылки
-2. Ключевую информацию и цитаты
-3. URL источников когда доступно
+			// Улучшенный промпт для веб-поиска с контекстом
+			const searchPrompt = `Веб-поиск: "${query}"
 
-Отформатируй ответ как структурированную информацию.`;
+Контекст: Пользователь ищет информацию в интернете по данному запросу. Необходимо найти релевантные источники и предоставить структурированную информацию.
 
-			const response = await this.generateResponse(groundingPrompt);
+Пожалуйста:
+1. Найди актуальную информацию по данному запросу в интернете
+2. Предоставь конкретные URL-адреса источников
+3. Извлеки ключевую информацию из найденных источников
+4. Убедись, что информация актуальна и достоверна
+
+Верни результат в формате:
+TITLE: [Название источника]
+URL: [URL источника]  
+SNIPPET: [Краткое описание/выдержка]
+SOURCE: [Название сайта]
+
+---
+
+Для каждого найденного источника.`;
+
+			const response = await this.generateResponse(searchPrompt);
 			
-			// В реальной реализации здесь будет использование Google Search grounding
 			return this.parseWebSearchResults(response);
 		} catch (error) {
 			console.error('Web search failed:', error);
+			new Notice('Ошибка веб-поиска: ' + error.message);
 			return [];
 		}
 	}
 
 	private parseWebSearchResults(response: string): WebSearchResult[] {
-		// Базовая имплементация парсинга результатов
-		// В реальной версии будет использоваться API Google Grounding
+		// Улучшенный парсер для веб-результатов
 		const results: WebSearchResult[] = [];
 		
-		// Простой парсер для демонстрации
-		const lines = response.split('\n');
-		let currentResult: Partial<WebSearchResult> = {};
+		// Разделяем результаты по разделителям
+		const sections = response.split('---').filter(section => section.trim());
 		
-		for (const line of lines) {
-			if (line.includes('http')) {
-				if (currentResult.title) {
-					results.push(currentResult as WebSearchResult);
-					currentResult = {};
+		for (const section of sections) {
+			const lines = section.trim().split('\n');
+			const result: Partial<WebSearchResult> = {};
+			
+			for (const line of lines) {
+				const trimmedLine = line.trim();
+				if (trimmedLine.startsWith('TITLE:')) {
+					result.title = trimmedLine.replace('TITLE:', '').trim();
+				} else if (trimmedLine.startsWith('URL:')) {
+					result.url = trimmedLine.replace('URL:', '').trim();
+				} else if (trimmedLine.startsWith('SNIPPET:')) {
+					result.snippet = trimmedLine.replace('SNIPPET:', '').trim();
+				} else if (trimmedLine.startsWith('SOURCE:')) {
+					result.source = trimmedLine.replace('SOURCE:', '').trim();
 				}
-				currentResult.url = line.trim();
-			} else if (line.trim() && !currentResult.title) {
-				currentResult.title = line.trim();
-			} else if (line.trim() && currentResult.title && !currentResult.snippet) {
-				currentResult.snippet = line.trim();
-				currentResult.source = 'Web Search';
+			}
+			
+			// Добавляем результат если есть минимальная информация
+			if (result.title && result.url) {
+				if (!result.source) result.source = 'Web Search';
+				if (!result.snippet) result.snippet = result.title;
+				results.push(result as WebSearchResult);
 			}
 		}
 		
-		if (currentResult.title) {
-			results.push(currentResult as WebSearchResult);
+		// Если не удалось распарсить структурированный формат, пытаемся найти URL'ы в тексте
+		if (results.length === 0) {
+			const urlMatches = response.match(/https?:\/\/[^\s]+/g);
+			if (urlMatches) {
+				urlMatches.slice(0, 3).forEach((url, index) => {
+					results.push({
+						title: `Источник ${index + 1}`,
+						url: url,
+						snippet: 'Найденный веб-источник',
+						source: 'Web Search'
+					});
+				});
+			}
 		}
 		
 		return results.slice(0, 5); // Ограничиваем количество результатов

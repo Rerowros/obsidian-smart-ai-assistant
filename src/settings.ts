@@ -330,7 +330,9 @@ export class GoogleAISettingTab extends PluginSettingTab {
 		
 		const infoEl = containerEl.createEl('div', { cls: 'google-ai-info' });
 		infoEl.createEl('p', { text: locale.apiInfoText1 });
-		infoEl.createEl('p').innerHTML = locale.apiInfoText2;
+		// Создаем параграф и добавляем текст безопасно
+		const p2 = infoEl.createEl('p');
+		p2.textContent = locale.apiInfoText2;
 		infoEl.createEl('p', { text: locale.apiInfoText3 });
 
 		const linksContainer = containerEl.createDiv({ cls: 'api-links-container' });
@@ -358,47 +360,6 @@ export class GoogleAISettingTab extends PluginSettingTab {
 			cls: 'external-link'
 		});
 		telegramLink.setAttribute('target', '_blank');
-
-		// Add some CSS styles for the links
-		const style = document.createElement('style');
-		style.textContent = `
-			.section-description {
-				display: block;
-				margin: -10px 0 15px 0;
-				padding: 0;
-				color: var(--text-muted);
-				font-style: italic;
-			}
-			
-			.api-links-container {
-				margin-top: 10px;
-				padding: 10px;
-				background: var(--background-secondary);
-				border-radius: 5px;
-				font-size: 0.9em;
-			}
-			
-			.links-header {
-				margin-bottom: 5px;
-				font-weight: 500;
-			}
-			
-			.links-list {
-				display: flex;
-				flex-wrap: wrap;
-				align-items: center;
-			}
-			
-			.external-link {
-				color: var(--text-accent);
-				text-decoration: none;
-			}
-			
-			.external-link:hover {
-				text-decoration: underline;
-			}
-		`;
-		document.head.appendChild(style);
 	}
 
 	private createModelSetting(containerEl: HTMLElement): void {

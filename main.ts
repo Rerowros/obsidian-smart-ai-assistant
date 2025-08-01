@@ -39,8 +39,7 @@ export default class GoogleAIPlugin extends Plugin {
 					return;
 				}
 				new SmartSearchModal(this.app, this).open();
-			},
-			hotkeys: [{ modifiers: ['Mod', 'Shift'], key: 'f' }]
+			}
 		});
 
 		// Add command for advanced features
@@ -102,11 +101,11 @@ export default class GoogleAIPlugin extends Plugin {
 			new AdvancedFeaturesModal(this.app, this).open();
 		});
 
-		console.log('Google AI Smart Search plugin loaded');
+		// Debug: removed console.log for production
 	}
 
 	onunload() {
-		console.log('Google AI Smart Search plugin unloaded');
+		// Debug: removed console.log for production
 	}
 
 	async loadSettings() {
@@ -154,7 +153,7 @@ export default class GoogleAIPlugin extends Plugin {
 
 	private async createSearchResultNote(query: string, response: string) {
 		const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-		const fileName = `AI Search - ${query.slice(0, 50).replace(/[/\\?%*:|"<>]/g, '-')} - ${timestamp}.md`;
+		const fileName = `AI Search - ${query.slice(0, 50).replace(/[/\\?%*:|"<>]/g, '-')!} - ${timestamp}.md`;
 		
 		const content = `# AI Search Results
 

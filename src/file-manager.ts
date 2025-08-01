@@ -214,15 +214,11 @@ export class FileManager {
 
 	renderClickableElement(container: HTMLElement, result: ClickableResult): HTMLElement {
 		const element = container.createEl('span', {
-			cls: `clickable-result clickable-${result.type}`,
+			cls: `clickable-result clickable-${result.type} file-manager-result ${result.type}`,
 			text: result.text
 		});
 
-		element.style.cursor = 'pointer';
-		element.style.textDecoration = 'underline';
-		element.style.color = result.type === 'file' ? '#7c7c7c' : 
-		                     result.type === 'web' ? '#0066cc' : '#008000';
-
+		// Стили теперь определены в CSS файле
 		if (result.tooltip) {
 			element.title = result.tooltip;
 		}

@@ -6,7 +6,6 @@ main.js
 *.js.map
 package-lock.json
 
-.github/
 
 # Development files
 .hot-reload
@@ -14,6 +13,7 @@ package-lock.json
 # Environment variables
 .env
 .env.local
+copilot-instructions.md
 
 # OS generated files
 .DS_Store
