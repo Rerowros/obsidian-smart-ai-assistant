@@ -4,7 +4,6 @@ node_modules/
 # Build outputs
 main.js
 *.js.map
-package-lock.json
 
 
 # Development files
@@ -18,7 +17,6 @@ copilot-instructions.md
 # OS generated files
 .DS_Store
 Thumbs.db
-esbuild.config.mjs
 
 # Editor directories and files
 .vscode/
