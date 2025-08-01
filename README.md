@@ -11,6 +11,11 @@
 - **Web Search** — Integration with internet search
 - **Code Execution** — Code execution and analysis capabilities
 - **Multi-language** — Support for Russian and English languages
+- **Quick Commands** — A set of commands for quick actions with selected text:
+  - Improve Writing Style
+  - Find Connections
+  - Brainstorm Ideas
+  - Summarize
 
 ## 📦 Installation
 

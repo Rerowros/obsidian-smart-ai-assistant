@@ -115,10 +115,11 @@ export class SmartSearchModal extends Modal {
 		const commandsGrid = quickCommands.createDiv({ cls: 'commands-grid' });
 		
 		const commands = [
-			{ text: this.locale.quickCommandSummarize, template: 'Summarize: ' },
-			{ text: this.locale.quickCommandExplain, template: 'Explain: ' },
-			{ text: this.locale.quickCommandBrainstorm, template: 'Brainstorm ideas for: ' },
-			{ text: this.locale.quickCommandTranslate, template: 'Translate to English: ' },
+			{ text: this.locale.quickCommandSearchByTopic, template: this.locale.quickCommandSearchByTopicTemplate },
+			{ text: this.locale.quickCommandImproveWriting, template: this.locale.quickCommandImproveWritingTemplate },
+			{ text: this.locale.quickCommandFindConnections, template: this.locale.quickCommandFindConnectionsTemplate },
+			{ text: this.locale.quickCommandBrainstorm, template: this.locale.quickCommandBrainstormTemplate },
+			{ text: this.locale.quickCommandSummarize, template: this.locale.quickCommandSummarizeTemplate },
 		];
 
 		commands.forEach(cmd => {

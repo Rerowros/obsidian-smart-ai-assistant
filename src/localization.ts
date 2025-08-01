@@ -210,14 +210,16 @@ export interface LocaleStrings {
 	
 	// Quick Commands
 	quickCommandsTitle: string;
-	quickCommandWhatIHave: string;
+	quickCommandSearchByTopic: string;
+	quickCommandImproveWriting: string;
 	quickCommandFindConnections: string;
-	quickCommandAnalyze: string;
-	quickCommandIdeas: string;
-	quickCommandSummarize: string;
-	quickCommandExplain: string;
 	quickCommandBrainstorm: string;
-	quickCommandTranslate: string;
+	quickCommandSummarize: string;
+	quickCommandSearchByTopicTemplate: string;
+	quickCommandImproveWritingTemplate: string;
+	quickCommandFindConnectionsTemplate: string;
+	quickCommandBrainstormTemplate: string;
+	quickCommandSummarizeTemplate: string;
 
 	// Other
 	searchErrorTitle: string;
@@ -444,14 +446,16 @@ export const LOCALE_EN: LocaleStrings = {
 	
 	// Quick Commands
 	quickCommandsTitle: 'Quick Commands:',
-	quickCommandWhatIHave: '📝 What I have about topic...',
-	quickCommandFindConnections: '🔗 Find connections between...',
-	quickCommandAnalyze: '📊 Analyze in detail...',
-	quickCommandIdeas: '💡 Give ideas based on...',
-	quickCommandSummarize: '📄 Summarize:',
-	quickCommandExplain: '🧠 Explain:',
-	quickCommandBrainstorm: '💡 Brainstorm ideas for:',
-	quickCommandTranslate: '🌐 Translate to English:',
+	quickCommandSearchByTopic: 'Search by topic',
+	quickCommandImproveWriting: 'Improve writing style',
+	quickCommandFindConnections: 'Find connections',
+	quickCommandBrainstorm: 'Brainstorm ideas',
+	quickCommandSummarize: 'Summarize',
+	quickCommandSearchByTopicTemplate: 'Search for notes about: ',
+	quickCommandImproveWritingTemplate: 'Improve the writing style of the following text: ',
+	quickCommandFindConnectionsTemplate: 'Find connections and related concepts for: ',
+	quickCommandBrainstormTemplate: 'Brainstorm ideas on the topic of: ',
+	quickCommandSummarizeTemplate: 'Summarize the following text: ',
 
 	// Other
 	searchErrorTitle: 'Search Error',
@@ -678,14 +682,16 @@ export const LOCALE_RU: LocaleStrings = {
 	
 	// Quick Commands
 	quickCommandsTitle: 'Быстрые команды:',
-	quickCommandWhatIHave: '📝 Что у меня есть по теме...',
-	quickCommandFindConnections: '🔗 Найди связи между...',
-	quickCommandAnalyze: '📊 Сделай анализ...',
-	quickCommandIdeas: '💡 Дай идеи на основе...',
-	quickCommandSummarize: '📄 Суммируй:',
-	quickCommandExplain: '🧠 Объясни:',
-	quickCommandBrainstorm: '💡 Мозговой штурм для:',
-	quickCommandTranslate: '🌐 Переведи на английский:',
+	quickCommandSearchByTopic: 'Поиск по теме',
+	quickCommandImproveWriting: 'Улучшить стиль письма',
+	quickCommandFindConnections: 'Найти связи',
+	quickCommandBrainstorm: 'Мозговой штурм',
+	quickCommandSummarize: 'Суммаризировать',
+	quickCommandSearchByTopicTemplate: 'Искать заметки о: ',
+	quickCommandImproveWritingTemplate: 'Улучшить стиль письма для следующего текста: ',
+	quickCommandFindConnectionsTemplate: 'Найти связи и связанные понятия для: ',
+	quickCommandBrainstormTemplate: 'Провести мозговой штурм на тему: ',
+	quickCommandSummarizeTemplate: 'Суммаризировать следующий текст: ',
 
 	// Other
 	searchErrorTitle: 'Ошибка поиска',

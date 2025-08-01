@@ -88,15 +88,18 @@ Instructions:
 3.  **Highlight key findings:** Point out the most important insights from the code's output.
 4.  **Suggest next steps:** If applicable, suggest further analysis or modifications to the code.`,
 
-	quickCommand: `You are an AI assistant designed for quick, concise answers. Execute the user's command based on the provided query.
+	quickCommand: `You are an AI assistant designed for quick, concise answers. Execute the user's command based on the provided query and context.
 
 User Query: {query}
+Context (if any): {context}
 
 Instructions:
--   **Summarize**: If the user asks for a summary, provide a brief and concise summary of the topic.
--   **Explain**: If the user asks for an explanation, provide a clear and simple explanation.
--   **Brainstorm**: If the user asks for ideas, provide a bulleted list of creative and relevant ideas.
--   **Translate**: If the user asks for a translation, provide the translation.
+-   **Summarize**: If the user asks for a summary, provide a brief and concise summary of the provided context.
+-   **Improve Writing Style**: If the user asks to improve writing, analyze the provided text and suggest improvements in style, grammar, and clarity.
+-   **Find Connections**: If the user asks to find connections, analyze the context and identify related concepts, notes, or ideas.
+-   **Brainstorm**: If the user asks for ideas on a topic, use the context to generate a bulleted list of creative and relevant ideas.
+-   **Explain**: If the user asks for an explanation, provide a clear and simple explanation of the context.
+-   **Translate**: If the user asks for a translation, provide the translation of the context.
 -   Be direct and to the point.
 -   Use Markdown for formatting if it enhances clarity.`,
 };
@@ -182,15 +185,18 @@ export const PROMPTS_RU: PromptTemplates = {
 3.  **Выделите ключевые выводы:** Укажите на наиболее важные идеи из вывода кода.
 4.  **Предложите следующие шаги:** Если применимо, предложите дальнейший анализ или модификации кода.`,
 
-	quickCommand: `Вы — AI-ассистент, предназначенный для быстрых и кратких ответов. Выполните команду пользователя на основе предоставленного запроса.
+	quickCommand: `Вы — AI-ассистент, предназначенный для быстрых и кратких ответов. Выполните команду пользователя на основе предоставленного запроса и контекста.
 
 Запрос пользователя: {query}
+Контекст (если есть): {context}
 
 Инструкции:
--   **Суммируй**: Если пользователь просит резюме, предоставьте краткое и сжатое изложение темы.
--   **Объясни**: Если пользователь просит объяснение, предоставьте ясное и простое объяснение.
--   **Мозговой штурм**: Если пользователь просит идеи, предоставьте маркированный список креативных и релевантных идей.
--   **Переведи**: Если пользователь просит перевод, предоставьте перевод.
+-   **Суммаризируй**: Если пользователь просит резюме, предоставьте краткое и сжатое изложение предоставленного контекста.
+-   **Улучши стиль письма**: Если пользователь просит улучшить письмо, проанализируйте предоставленный текст и предложите улучшения в стиле, грамматике и ясности.
+-   **Найди связи**: Если пользователь просит найти связи, проанализируйте контекст и определите связанные понятия, заметки или идеи.
+-   **Мозговой штурм**: Если пользователь просит идеи по теме, используйте контекст для генерации маркированного списка креативных и релевантны идей.
+-   **Объясни**: Если пользователь просит объяснение, предоставьте ясное и простое объяснение контекста.
+-   **Переведи**: Если пользователь просит перевод, предоставьте перевод контекста.
 -   Будьте прямым и по существу.
 -   Используйте Markdown для форматирования, если это улучшает ясность.`,
 };
@@ -205,4 +211,9 @@ export function formatPrompt(template: string, variables: Record<string, string>
 		formatted = formatted.replace(new RegExp(`{${key}}`, 'g'), value);
 	}
 	return formatted;
+}
+
+export function getQuickCommandPrompt(language: 'en' | 'ru', query: string, context: string = ''): string {
+	const prompts = getPrompts(language);
+	return formatPrompt(prompts.quickCommand, { query, context });
 }
